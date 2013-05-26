@@ -1190,7 +1190,7 @@ void CMainFrame::OnMenuOptionsEncryptWallet(wxCommandEvent& event)
         return;
     }
 
-    if(wxMessageBox(_("WARNING: If you encrypt your wallet and lose your passphrase, you will LOSE ALL OF YOUR BITCOINS!\nAre you sure you wish to encrypt your wallet?"), "Devcoin", wxYES_NO) != wxYES)
+    if(wxMessageBox(_("WARNING: If you encrypt your wallet and lose your passphrase, you will LOSE ALL OF YOUR DEVCOINS!\nAre you sure you wish to encrypt your wallet?"), "Devcoin", wxYES_NO) != wxYES)
         return;
 
     string strWalletPassTest;
