@@ -481,19 +481,6 @@ inline void heapchk()
 #endif
 }
 
-// Randomize the stack to help protect against buffer overrun exploits
-#define IMPLEMENT_RANDOMIZE_STACK(ThreadFn)     \
-    {                                           \
-        static char nLoops;                     \
-        if (nLoops <= 0)                        \
-            nLoops = GetRand(20) + 1;           \
-        if (nLoops-- > 1)                       \
-        {                                       \
-            ThreadFn;                           \
-            return;                             \
-        }                                       \
-    }
-
 #define CATCH_PRINT_EXCEPTION(pszFn)     \
     catch (std::exception& e) {          \
         PrintException(&e, (pszFn));     \

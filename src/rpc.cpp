@@ -2551,7 +2551,6 @@ private:
 
 void ThreadRPCServer(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadRPCServer(parg));
     try
     {
         vnThreadsRunning[4]++;

@@ -739,7 +739,6 @@ void CNode::Cleanup()
 
 void ThreadSocketHandler(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadSocketHandler(parg));
     try
     {
         vnThreadsRunning[0]++;
@@ -1053,7 +1052,6 @@ void ThreadSocketHandler2(void* parg)
 #ifdef USE_UPNP
 void ThreadMapPort(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadMapPort(parg));
     try
     {
         vnThreadsRunning[5]++;
@@ -1209,7 +1207,6 @@ unsigned int pnSeed[] =
 
 void ThreadOpenConnections(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadOpenConnections(parg));
     try
     {
         vnThreadsRunning[1]++;
@@ -1420,7 +1417,6 @@ bool OpenNetworkConnection(const CAddress& addrConnect)
 
 void ThreadMessageHandler(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadMessageHandler(parg));
     try
     {
         vnThreadsRunning[2]++;
