@@ -87,6 +87,16 @@ Value ValueFromAmount(int64 amount)
     return (double)amount / (double)COIN;
 }
 
+std::string HexBits(unsigned int nBits)
+{
+    union {
+        int32_t nBits;
+        char cBits[4];
+    } uBits;
+    uBits.nBits = htonl((int32_t)nBits);
+    return HexStr(BEGIN(uBits.cBits), END(uBits.cBits));
+}
+
 void WalletTxToJSON(const CWalletTx& wtx, Object& entry)
 {
     entry.push_back(Pair("confirmations", wtx.GetDepthInMainChain()));
@@ -380,14 +390,18 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex)
 {
     Object result;
     result.push_back(Pair("hash", block.GetHash().GetHex()));
-
-    result.push_back(Pair("blockcount", blockindex->nHeight));
+    CMerkleTx txGen(block.vtx[0]);
+    txGen.SetMerkleBranch(&block);
+    result.push_back(Pair("confirmations", (int)txGen.GetDepthInMainChain()));
+    //    result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
+    result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK)));
+    result.push_back(Pair("height", blockindex->nHeight));
     result.push_back(Pair("version", block.nVersion));
     result.push_back(Pair("merkleroot", block.hashMerkleRoot.GetHex()));
 
     result.push_back(Pair("time", (boost::int64_t)block.GetBlockTime()));
     result.push_back(Pair("nonce", (boost::uint64_t)block.nNonce));
-
+    result.push_back(Pair("bits", HexBits(block.nBits)));
     result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
     Array txhashes;
     BOOST_FOREACH (const CTransaction&tx, block.vtx)
