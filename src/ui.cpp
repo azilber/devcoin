@@ -13,6 +13,11 @@
 #include <crtdbg.h>
 #endif
 
+#include "xpm/bitcoin80.xpm"
+#include "xpm/addressbook16.xpm"
+#include "xpm/send16noshadow.xpm"
+
+
 using namespace std;
 using namespace boost;
 
