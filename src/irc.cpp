@@ -239,7 +239,6 @@ bool GetIPFromIRC(SOCKET hSocket, string strMyName, unsigned int& ipRet)
 
 void ThreadIRCSeed(void* parg)
 {
-    IMPLEMENT_RANDOMIZE_STACK(ThreadIRCSeed(parg));
     try
     {
         ThreadIRCSeed2(parg);

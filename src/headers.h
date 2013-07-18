@@ -16,14 +16,19 @@
 #ifdef _WIN32_IE
 #undef _WIN32_IE
 #endif
+
 #define _WIN32_IE 0x0400
 #define WIN32_LEAN_AND_MEAN 1
 
-// Include boost/foreach here as it defines __STDC_LIMIT_MACROS on some systems.
-#include <boost/foreach.hpp>
 #ifndef __STDC_LIMIT_MACROS
-#define __STDC_LIMIT_MACROS // to enable UINT64_MAX from stdint.h
+#define __STDC_LIMIT_MACROS
+// to enable UINT64_MAX from stdint.h
+#include <stdint.h>
 #endif
+
+// Include boost/foreach here as it defines __STDC_LIMIT_MACROS on some systems.
+// #include <boost/foreach.hpp>
+
 
 #if (defined(__unix__) || defined(unix)) && !defined(USG)
 #include <sys/param.h>  // to get BSD define
@@ -73,21 +78,13 @@
 #include <process.h>
 #include <malloc.h>
 #else
+#include <unistd.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#include <sys/socket.h>
 #include <sys/stat.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <unistd.h>
 #include <errno.h>
-#include <net/if.h>
-#include <ifaddrs.h>
 #include <fcntl.h>
 #include <signal.h>
-#endif
-#ifdef BSD
-#include <netinet/in.h>
 #endif
 
 

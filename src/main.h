@@ -26,7 +26,6 @@ class CAddress;
 class CInv;
 class CRequestTracker;
 class CNode;
-class CBlockIndex;
 class CAuxPow;
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;

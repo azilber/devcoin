@@ -10,8 +10,17 @@
 #ifndef __INCLUDED_PROTOCOL_H__
 #define __INCLUDED_PROTOCOL_H__
 
-#include "serialize.h"
 #include <string>
+
+#ifndef _WIN32
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <ifaddrs.h>
+#endif
+
+#include "serialize.h"
 #include "uint256.h"
 
 extern bool fTestNet;
