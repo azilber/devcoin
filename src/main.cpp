@@ -1436,14 +1436,15 @@ bool CBlock::AcceptBlock()
 
     // Check that the block chain matches the known block chain up to a checkpoint
     if (!fTestNet)
-        if ((nHeight ==  2345 && hash != uint256("0x000000000de3570a6eb881351bd967f80496309004fdc582b965137086754b0c")) ||
-            (nHeight ==  2500 && hash != uint256("0x000000001871a2314936d39b85174cc911bf6fd58d3877412ee7b69a48e7e29e")) ||
-            (nHeight ==  2700 && hash != uint256("0x0000000008e46decc106f05aac777240f72b789333960d058aec2eefaa6a49f0")) ||
-            (nHeight ==  3500 && hash != uint256("0x00000000207e6ef7d89a813bf7c27e8a31f1ca1b703f8fc5aeeeb0c183b8048e")) ||
+        if ((nHeight ==  2500 && hash != uint256("0x000000001871a2314936d39b85174cc911bf6fd58d3877412ee7b69a48e7e29e")) ||
             (nHeight ==  4500 && hash != uint256("0x000000000967cc95711f66f804e3f431298686d681d2d5760f61856954d08faf")) ||
             (nHeight ==  5250 && hash != uint256("0x00000000085702bfbf27daffb638be65aceb78a5f464b12539b51c1b9c548421")) ||
             (nHeight ==  8900 && hash != uint256("0x00000000001bb8090630fcabb82ad0ab75df3eb5b008956b3ae2a352a4324f19")) ||
-            (nHeight == 23500 && hash != uint256("0x000000000b83c3c9753d2440b91121cb0ff220bb23c136c6d09a539207e292fb")))
+            (nHeight == 23500 && hash != uint256("0x000000000b83c3c9753d2440b91121cb0ff220bb23c136c6d09a539207e292fb")) ||
+	    (nHeight == 54800 && hash != uint256("0x04e8dcc91ff2aa0f1197f88551b4cb24ccef02ea51081b4d05ab4e3a38554137")) ||
+            (nHeight == 67720 && hash != uint256("0x0a111b265d89f77b4c86fa6f44e3e2ad876547b1eccf19319cde922b42c1161e")) ||
+            (nHeight == 87570 && hash != uint256("0x5af6343f5f876f8c32ce603bce3bb37bf88b95dcde849a5b6bff768557fa9994"))
+	   )
             return error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight);
 
     // Write block to history file
