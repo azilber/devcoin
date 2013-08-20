@@ -1159,12 +1159,9 @@ void MapPort(bool /* unused fMapPort */)
 
 
 static const char *strDNSSeed[] = {
-/* "ec2-107-20-209-11.compute-1.amazonaws.com",	// 107.20.209.11:52333
-"ec2-107-20-228-112.compute-1.amazonaws.com",	// 107.20.209.112:52333
-"ec2-50-19-210-139.compute-1.amazonaws.com",	// 50.19.210.139:52333
-"sworm.no-ip.com",
-"crossciv.no-ip.org",
-*/
+"dvcstable01.dvcnode.org",
+"dvc-seed.21stcenturymoneytalk.org",
+"dvcstable01.devtome.com"
 };
 
 void DNSAddressSeed()
